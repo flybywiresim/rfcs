@@ -8,19 +8,16 @@ The "RFC" (request for comments) process is intended to provide a consistent and
 
 
 ## When you need to follow this process
----
 
 You need to follow this process if you intend to make "substantial" changes to any FlyByWire aircraft or utilities. The definition of a substantial change may vary and evolve, but in general it is something that changes the code structure, deployment/build process, and/or interface. 
 
 *This section needs more elaboration and specific conditions for an RFC.*
 
 ## Before creating an RFC
----
 
 Please spend time to make a quality proposal, including as many details as possible. We urge you to speak with other contributors on our [official Discord server](https://discord.gg/flybywire) to pursue feedback before opening an RFC.
 
 ## Process for opening an RFC
----
 
 - Fork the [FlyByWire RFC repository](https://github.com/flybywiresim/rfcs).
 - Copy `000-template.md` to `text/000-my-rfc.md` (where "my-rfc" is descriptive). Leave the number as 000 - do not assign an RFC number yet as we will do so once the PR is merged.
