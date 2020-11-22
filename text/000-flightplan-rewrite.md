@@ -37,6 +37,7 @@ TODO
 - Can't go DIR TO some STAR waypoints (need to investigate when/under what conditions this happens).
 - VERT REV page: can't set "above" altitude constraints (+). Instead, the MCDU changes it to a "below" (-) constraint once entered.
 - VERT REV page: can't properly set "below" altitude constraints: Inserting with "-<number>" does nothing. See point directly above for related behavior.
+- VERT REV page: can't properly set "at" altitude constraint (no + or -).
 - Transition/TRANS and (DECEL) waypoints often have inaccurate altitude constraints, such as 100 or 1000 feet for example, when the previous and next waypoints' altitude constraints are correct.
 - Trying to fly an ILS approach without a transition and/or STAR may cause the plane to instead fly directly to the airport upon reaching the first approach waypoint
 - Direct-to any STAR waypoint causes undefined behavior, including:
