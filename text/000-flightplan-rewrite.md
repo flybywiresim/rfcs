@@ -37,11 +37,12 @@ TODO
 - VERT REV page: can't set "above" altitude constraints (+). Instead, the MCDU changes it to a "below" (-) constraint once entered.
 - VERT REV page: can't properly set "below" altitude constraints: Inserting with "-<number>" does nothing. See point directly above for related behavior.
 - Transition/TRANS and (DECEL) waypoints often have inaccurate altitude constraints, such as 100 or 1000 feet for example, when the previous and next waypoints' altitude constraints are correct.
+- Trying to fly an ILS approach without a transition and/or STAR may cause the plane to instead fly directly to the airport upon reaching the first approach waypoint
 - Direct-to any STAR waypoint causes undefined behavior, including:
     - Deleting previous waypoints from the navigation display, except departure airport.
     - After reaching/passing the direct-to waypoint, the departure airport is deleted and replaced with a USER waypoint.
     - After reaching/passing the direct-to waypoint, some other remaining waypoints in the STAR may be skipped, and the flight plan may go direct-to a different waypoint in the STAR which is not the upcoming one.
-    - After reaching this incorrect/different waypoint, the plane may fly the flight plan in reverse. Trying to go direct-to another STAR waypoint to reset this causes complete deviation from the flight plan and more undefined behavior.
+    - If a second DIR TO is performed on the STAR to correct this error, the plane may fly the flight plan in reverse after reaching that DIR-TO waypoint. Trying to go direct-to another STAR waypoint to fix this may cause a complete deviation from the flight plan and more undefined behavior.
 - DIR TO input field ("[   ]") next to LSK 1 holds the waypoint name of the previous waypoint that a DIR TO operation was performed on, when this field should be cleared once the direct-to has been completed.
 - Updating the altitude (and most likely speed, when implemented) constraints on a waypoint will not update their values on the ND (navigation display) when the CSTR EFIS filter is currently active - you must turn CSTR off then on again for the ND values to update, which should not be necessary in real life.
 - VNAV: Waypoint altitude constraints are not obeyed in managed mode, at least at first glance. Needs more investigation.
