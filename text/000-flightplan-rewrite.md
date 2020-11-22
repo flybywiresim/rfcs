@@ -44,6 +44,7 @@ TODO
     - After reaching/passing the direct-to waypoint, some other remaining waypoints in the STAR may be skipped, and the flight plan may go direct-to a different waypoint in the STAR which is not the upcoming one.
     - If a second DIR TO is performed on the STAR to correct this error, the plane may fly the flight plan in reverse after reaching that DIR-TO waypoint. Trying to go direct-to another STAR waypoint to fix this may cause a complete deviation from the flight plan and more undefined behavior.
 - DIR TO input field ("[   ]") next to LSK 1 holds the waypoint name of the previous waypoint that a DIR TO operation was performed on, when this field should be cleared once the direct-to has been completed.
+- Executing a DIR TO (by pressing "INSERT*"/"TMPY INSERT*") should engage managed heading (nav) mode if currently in selected mode - this behavior is not implemented it seems.
 - Updating the altitude (and most likely speed, when implemented) constraints on a waypoint will not update their values on the ND (navigation display) when the CSTR EFIS filter is currently active - you must turn CSTR off then on again for the ND values to update, which should not be necessary in real life.
 - VNAV: Waypoint altitude constraints are not obeyed in managed mode, at least at first glance. Needs more investigation.
 
