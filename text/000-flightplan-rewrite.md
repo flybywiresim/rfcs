@@ -29,6 +29,7 @@ TODO
 
 **Current known issues with flight plan system**:
 - USER and D0 waypoints should not be present.
+- Extremely wide/shallow turns are made when following a flight plan with a sharp (>90 degree) turn at a non-overfly waypoint. It can often take several nautical miles for the plane to re-intercept the track to the following waypoint.
 - (T-P) waypoint should be present when intercepting a direct-to waypoint.
 - VERT REV page: can't set/change/clear speed constraints.
 - VERT REV page: can't clear altitude constraints.
@@ -45,6 +46,7 @@ TODO
     - If a second DIR TO is performed on the STAR to correct this error, the plane may fly the flight plan in reverse after reaching that DIR-TO waypoint. Trying to go direct-to another STAR waypoint to fix this may cause a complete deviation from the flight plan and more undefined behavior.
 - DIR TO input field ("[   ]") next to LSK 1 holds the waypoint name of the previous waypoint that a DIR TO operation was performed on, when this field should be cleared once the direct-to has been completed.
 - Executing a DIR TO (by pressing "INSERT*"/"TMPY INSERT*") should engage managed heading (nav) mode if currently in selected mode - this behavior is not implemented it seems.
+- Executing a DIR TO on a waypoint will cause the green "flight plan" line on the ND (navigation display) from the current position to the waypoint to be cut off just before the waypoint, instead of joining up with the remaining flight plan line in a smooth, continuous fashion.
 - Updating the altitude (and most likely speed, when implemented) constraints on a waypoint will not update their values on the ND (navigation display) when the CSTR EFIS filter is currently active - you must turn CSTR off then on again for the ND values to update, which should not be necessary in real life.
 - VNAV: Waypoint altitude constraints are not obeyed in managed mode, at least at first glance. Needs more investigation.
 
