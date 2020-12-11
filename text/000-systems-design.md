@@ -228,6 +228,8 @@ impl MutableVisitor for SimVarsFromSimulatorToModelVisitor {
 }
 ```
 
+For Rust specifically, [@devsnek](https://github.com/devsnek) suggests using the [uom](https://github.com/iliekturtles/uom) crate.
+
 <!-- # Guide-level explanation
 [guide-level-explanation]: #guide-level-explanation
 
