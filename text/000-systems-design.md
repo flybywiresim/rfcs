@@ -19,7 +19,7 @@ Before going through the requirements, some definitions:
 
 * **System**: Does not refer to a software system but to a part of the aircraft, i.e. electrical system.
 * **Model**: The part of the software that relates to actual parts of the aircraft, e.g. `ElectricalSystem`, `Engine`, `EngineGenerator`, etc.
-* **Software**: The thing we're building 🤡.
+* **Software**: The thing we're building .
 
 ## 1. Runs outside the simulator
 The software should be testable outside of the simulator by running it in unit tests or a console application.
