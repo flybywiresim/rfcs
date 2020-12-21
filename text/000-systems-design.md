@@ -199,8 +199,38 @@ fn main() {
 }
 ```
 
-## Unit/integration tests
-Unit tests by themselves need no additional thought as they can easily be implemented. Integration tests which combine parts of the model, or run on the whole model do require some more thought.
+## Unit tests
+Unit tests by themselves need no additional thought as they can easily be implemented. I would recommend writing a builder-like testing type to make tests easier to read:
+
+```rust
+#[test]
+fn when_external_power_connected_and_apu_running_external_power_has_priority() {
+    let tester = tester_with().connected_external_power().and().running_apu().run();
+
+    assert_eq!(tester.ac_bus_1_output().source(), PowerSource::External);
+    assert_eq!(tester.ac_bus_2_output().source(), PowerSource::External);
+}
+```
+
+Note that any specifications from sources other than the manual should be listed together with the appropriate test for future reference:
+
+```rust
+/// # Source
+/// Discord (komp#1821):
+/// > The fault light will extinguish after 3 seconds. That's the time delay before automatic switching is activated in case of AC BUS 1 loss.
+#[test]
+fn with_ac_bus_1_being_unpowered_after_a_delay_ac_bus_2_powers_ac_ess_bus() {
+    let tester = tester_with().running_engines().and().failed_ac_bus_1()
+        .run_waiting_for_ac_ess_feed_transition();
+
+    assert_eq!(tester.ac_ess_bus_output().source(), PowerSource::EngineGenerator(2));
+}
+```
+
+For further testing examples, including the tester implementation, please refer to the A320 electrical implementation found [here](https://github.com/davidwalschots/airbus-systems).
+
+## Integration tests
+Integration tests which combine parts of the model, or run on the whole model do require some more thought.
 
 The integration tests will likely be about (1) having a system in a state, (2) applying some change to it (e.g. increasing the engine's N2) and then (3) observing the resulting model changes are as expected.
 
