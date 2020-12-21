@@ -67,7 +67,7 @@ fn main() {
     airbus.update();
 
     let fromModelToSimVisitor = SimVarsFromModelToSimulatorVisitor {};
-    airbus.accept(&fromSimToModelVisitor);
+    airbus.accept(&fromModelToSimVisitor);
 }
 
 impl MutableVisitor for SimVarsFromSimulatorToModelVisitor {
