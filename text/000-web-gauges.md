@@ -1,7 +1,7 @@
 - Feature Name: `web-gauges`
 - Start Date: 2020-12-22
-- RFC PR: [flybywiresim/rfcs#0000](https://github.com/flybywiresim/rfcs/pull/0000)
-- A32NX Issue: [flybywiresim/a32nx#0000](https://github.com/flybywiresim/a32nx/issues/0000)
+- RFC PR: [flybywiresim/rfcs#0000](https://github.com/flybywiresim/rfcs/pull/7)
+- ~~A32NX Issue: N/A~~
 
 # Summary
 [summary]: #summary
