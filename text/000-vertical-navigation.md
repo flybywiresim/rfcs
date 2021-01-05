@@ -1,7 +1,7 @@
 - Feature Name: vertical_navigation
 - Start Date: 2021-01-04
-- RFC PR: [flybywiresim/rfcs#0000](https://github.com/flybywiresim/rfcs/pull/0000)
-- A32NX Issue: [flybywiresim/a32nx#0000](https://github.com/flybywiresim/a32nx/issues/0000)
+- RFC PR: [flybywiresim/rfcs#9](https://github.com/flybywiresim/rfcs/pull/9)
+- A32NX Issue: N/A
 
 # Summary
 [summary]: #summary
@@ -161,7 +161,7 @@ Credit: @donstim
 - However, if said climb is above an AT or AT OR BELOW constraint, a level segment is inserted at the constraint altitude until the constraint point.
 - There is no specific strategy for satisfying AT OR ABOVE constraints
 - In the event of conflict between constraints, the first laterally encountered constraint has priority.
-- 
+- TODO: Top of climb (ToC) prediction
 
 ### Cruise
 
