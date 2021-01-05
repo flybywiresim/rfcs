@@ -22,7 +22,7 @@ The algorithm and calculations specified below are derived from real A320 refere
 [reference-level-explanation]: #reference-level-explanation
 
 ## **Data required**
----
+
 - Aircraft
     - ZFWCG (to obtain CG)
     - ZFW (to obtain GW)
@@ -44,7 +44,6 @@ The algorithm and calculations specified below are derived from real A320 refere
     - Destination runway threshold altitude
 
 ## **Criteria for recalculation**
----
 
 During recomputation, predictions are temporarily dashed on MCDU pages and pseudo-waypoints are temporarily removed from MCDU and ND
 
@@ -71,18 +70,18 @@ Predictions are continually "refreshed" - no tempoary dashed line.
 - HM fix overfly
 
 ## **Wind interpolation**
----
+
 Calculations: TODO
 
 ## **Cost index**
----
+
 Calculations: TODO
 
 ![](./img/vertical-navigation/3.png)
 ![](./img/vertical-navigation/4.png)
 
 ## **Optimum speed calculations**
----
+
 **Speed lower limit**: maximum between minimum selectable speed (VLS) and green dot speed (VFTO).
 
 **Speed upper limit**: smallest of VMAX (max selectable speed, 0.2g buffet margin), VMO-10 or MMO-0.02, and VMX CRZ (max speed held in level flight with max cruise thrust)
@@ -171,6 +170,8 @@ Credit: @donstim
     - Step climb: Max climb thrust (at step speed)
 
 ### Descent
+
+![](./img/vertical-navigation/6.png)
 
 - From DECEL pseudo-waypoint moving backwards through the flight plan, find the first constraint waypoint which does not satisfy an idle path descent.
 
