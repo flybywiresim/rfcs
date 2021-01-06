@@ -122,7 +122,7 @@ This is already computed, but need to confirm whether existing DECEL point calcu
 
 - **Base - clean config**: Cd = Cd0 + k * Cl²
 - **Speedbrake deflection**: +(0.035 * 0.66 * \<spoiler deflection percent simvar\>)
-- **Gear full extension**: +0.045
+- **Gear extension**: +(0.045 * \<spoiler deflection percent simvar\>)
 - **Flaps**: +(0.046 + (f)(1.93)(1.85) + (s)(1.93))
     - 0.046 is the base drag for flaps
     - *f* is the flap angle in radians (e.g. 0.698 rad = 40 deg)
