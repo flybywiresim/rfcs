@@ -133,7 +133,7 @@ This is already computed, but need to confirm whether existing DECEL point calcu
     - Multiplication by 0.8 is necessary to adjust for the over-prediction of drag compared to the measured in-sim values
 - **Speedbrake deflection**: +(0.035 * 0.66 * \<spoiler deflection percent simvar\>)
     - For some reason, max spoiler deflection is 66% instead of 100%, so the speedbrake component of drag coefficient must be multipled by 0.66
-- **Gear extension**: +(0.045 * \<spoiler deflection percent simvar\>)
+- **Gear extension**: +(0.045 * \<gear extension percent simvar\>)
 - **Flaps**: +(0.046 + (f)(1.93)(1.85) + (s)(1.93))
     - 0.046 is the base drag for flaps
     - *f* is the flap angle in radians (e.g. 0.698 rad = 40 deg)
