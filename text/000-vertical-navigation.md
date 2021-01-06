@@ -116,7 +116,6 @@ This is already computed, but need to confirm whether existing DECEL point calcu
 ### **flight_model.cfg definitions**
 
 - ***Cd0***:  0.0237
-- ***k*** (not used): 0.75
 - ***b*** (wing span): 117.5 ft.
 - ***S*** (wing area): 1313.2 sq. ft.
 - ***e*** (wing efficiency factor): 0.75
