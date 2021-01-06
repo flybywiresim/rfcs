@@ -116,24 +116,28 @@ This is already computed, but need to confirm whether existing DECEL point calcu
 ### **flight_model.cfg definitions**
 
 - ***Cd0***:  0.0237
-- ***k***: 0.75
-
-### **Coefficient of drag** (based on MSFS flight model eqns.)
-
-- **Base - clean config**: Cd = Cd0 + k * Cl²
-- **Speedbrake deflection**: +(0.035 * 0.66 * \<spoiler deflection percent simvar\>)
-- **Gear extension**: +(0.045 * \<spoiler deflection percent simvar\>)
-- **Flaps**: +(0.046 + (f)(1.93)(1.85) + (s)(1.93))
-    - 0.046 is the base drag for flaps
-    - *f* is the flap angle in radians (e.g. 0.698 rad = 40 deg)
-    - *s* is the slat angle in radians (e.g. 0.471 rad = 27 deg)
+- ***k*** (not used): 0.75
+- ***b*** (wing span): 117.5 ft.
+- ***S*** (wing area): 1313.2 sq. ft.
+- ***e*** (wing efficiency factor): 0.75
 
 ### **Coefficient of lift**
 
 - Cl = Weight / (1481.4 x Mach² \* delta \* S)
     - Delta: the pressure at the altitude divided by the pressure at sea level
-    - S: wing area
     - Note: 1481.4 constant is for weight in lbs and wing area in square feet
+
+### **Coefficient of drag** (based on MSFS flight model eqns. & above definitions)
+
+- **Base - clean config**: Cd = Cd0 + ((0.8\*Cl - Cl0)²)/((b²/S) * π * e)
+    - Multiplication by 0.8 is necessary to adjust for the over-prediction of drag compared to the measured in-sim values
+- **Speedbrake deflection**: +(0.035 * 0.66 * \<spoiler deflection percent simvar\>)
+    - For some reason, max spoiler deflection is 66% instead of 100%, so the speedbrake component of drag coefficient must be multipled by 0.66
+- **Gear extension**: +(0.045 * \<spoiler deflection percent simvar\>)
+- **Flaps**: +(0.046 + (f)(1.93)(1.85) + (s)(1.93))
+    - 0.046 is the base drag for flaps
+    - *f* is the flap angle in radians (e.g. 0.698 rad = 40 deg)
+    - *s* is the slat angle in radians (e.g. 0.471 rad = 27 deg)
 
 ### **Idle segment FPA (flight path angle)**
 
