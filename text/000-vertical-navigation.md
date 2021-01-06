@@ -121,6 +121,8 @@ This is already computed, but need to confirm whether existing DECEL point calcu
 - ***S*** (wing area): 1313.2 sq. ft.
 - ***e*** (wing efficiency factor): 0.75
 
+**Note:** When flaps/slats are deployed, the wing area is "increased" by the sim. Further investigation into this is required.
+
 ### **Coefficient of lift**
 
 - Cl = Weight / (1481.4 x Mach² \* delta \* S)
