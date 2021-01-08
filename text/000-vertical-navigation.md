@@ -103,15 +103,14 @@ Descent optimum speed is a MACH/CAS pair which is frozen at transition to descen
 Go-around optimum speed is VFTO.
 
 ## **Fuel burn prediction**
----
+
 For now: use existing EFOB calculations to predict fuel burn between waypoints.
 
 ## **DECEL pseudo-waypoint location**
----
+
 This is already computed, but need to confirm whether existing DECEL point calculations are accurate enough for our purposes.
 
 ## **Flight model calculations**
----
 
 ### **flight_model.cfg definitions**
 
@@ -153,8 +152,6 @@ Credit: @donstim
     - Force = thrust - drag
 
 ## **Algorithm for profile prediction**
-
----
 
 ### Climb
 - Thrust reduced to MAX CLB at thrust reduction altitude.
