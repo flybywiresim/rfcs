@@ -102,13 +102,39 @@ Descent optimum speed is a MACH/CAS pair which is frozen at transition to descen
 
 Go-around optimum speed is VFTO.
 
+## **DECEL pseudo-waypoint computation**
+
+*This is already computed, but need to confirm whether existing DECEL point calculations are accurate enough for our purposes.*
+
+Vapp is held up to 1000 ft AGL in landing conf (above destination runway threshold) for precision approaches, and up to the final approach fix in landing conf for non-precision approaches. To compute the speed profile from Vapp, idle thrust is assumed with the right configuration to accelerate backwards to the descent speed, at which point DECEL is located. Constant altitude segments are assumed, whenever required, to in order to meet speed constraints.
+
+
+## **Engine Model Calculations**
+
+### Obtaining idle thrust
+
+Based on TazX's engine model. Here is how to obtain idle thrust using tables and bilinear interpolation:
+
+1. Using a TLA of 0 for idle thrust, first interpolate the altitude for both tables to obtain two CN2 values: one for mach 0, and one for mach 0.8. Then, interpolate between these two CN2 values based on the current mach.
+
+    ![](./img/vertical-navigation/7.png)
+
+2. Using the CN2 value from the last step, use the CN2 to CN1 table (interpolating the CN2 value) to obtain two CN1 values: one for mach 0, and one for mach 0.8. Then, interpolate between these two CN1 values based on the current mach.
+
+    ![](./img/vertical-navigation/9.png)
+
+3. Using the CN1 value from the last step, and the current mach, perform bilinear interpolation to get a thrust value in pounds of force. This is the idle thrust.
+
+    ![](./img/vertical-navigation/8.png)
+
+
+### Obtaining take-off and climb thrust
+
+Similar process above, but only step 3 is needed - simply use the pre-computed TOGA or FLEX N1 to get take-off thrust, and the CLB N1 to get climb thrust.
+
 ## **Fuel burn prediction**
 
 For now: use existing EFOB calculations to predict fuel burn between waypoints.
-
-## **DECEL pseudo-waypoint location**
-
-This is already computed, but need to confirm whether existing DECEL point calculations are accurate enough for our purposes.
 
 ## **Flight model calculations**
 
@@ -189,6 +215,8 @@ Credit: @donstim
     - Moving forwards through the flight plan until end of IDLE path in fixed-distance steps (e.g. 5nm), performing calculations at each step with updated gross weight, wind, and altitude figures (as well as optimum speed and other constant factors), integrate position to find the distance until the aircraft will reach the first waypoint constraint it must obey (the altitude of the waypoint which divides the IDLE and GEOMETRIC paths). 
 
         - If the SPD LIM occurs during the IDLE path (or there is a speed constraint at a waypoint), perform the necessary calculations using the "Idle deceleration distance" formula so that the aircraft meets this restriction.
+        
+            - **NOTE**: Some documents indicate that deceleration to meet SPD LIM is a continuous decelerating descent, whereas all other deceleration in the descent/approach (such as at a DECEL waypoint), are level segment decelerations.
 
     - Find the distance error between the predicted end of idle segment (the waypoint), and the actual end of idle segment (the position the previous calculation ended at when meeting the altitude constraint).
 
