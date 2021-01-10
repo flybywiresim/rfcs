@@ -246,6 +246,22 @@ Credit: @donstim
 
 ![](./img/vertical-navigation/5.png)
 
+# Pseudo-Waypoints
+
+## MCDU & ND
+
+- **(T/C)**
+- **(T/D)**
+- **(SPD LIM)**
+- **(DECEL)**
+
+## ND ONLY
+
+- **Level-off (climb)**: same as (T/C) if FCU altitude matches cruise altitude. Otherwise, indicates cruise altitude or altitude restriction level-off.
+- **Level-off (descent)**: FCU altitude or altitude restriction level-off.
+- **Start of climb**: appears after AT or AT OR BELOW altitude constraint during climb
+- **Intercept point**: where the aircraft will intercept the descent profile (either from above or below)
+
 # Drawbacks
 [drawbacks]: #drawbacks
 
