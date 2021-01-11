@@ -259,8 +259,143 @@ Credit: @donstim
 
 - **Level-off (climb)**: same as (T/C) if FCU altitude matches cruise altitude. Otherwise, indicates cruise altitude or altitude restriction level-off.
 - **Level-off (descent)**: FCU altitude or altitude restriction level-off.
-- **Start of climb**: appears after AT or AT OR BELOW altitude constraint during climb
-- **Intercept point**: where the aircraft will intercept the descent profile (either from above or below)
+- **Start of climb**: appears after AT or AT OR BELOW altitude constraint during climb.
+- **Start of descent**: same as (T/D) if current altitude matches cruise altitude. Otherwise, appears after AT or AT OR ABOVE altitude constraint during descent.
+- **Intercept point**: where the aircraft will intercept the descent profile (either from above or below).
+
+# Pseudocode
+
+## FLIGHT MODEL FUNCTIONS
+```
+getLiftCoefficient() {
+    // placeholder
+}
+
+getDragCoefficient() {
+    // placeholder
+}
+
+getDrag() {
+    // placeholder
+}
+```
+
+## ENGINE & FUEL MODEL FUNCTIONS
+```
+getIdleThrust(mach, altitude) {
+    // placeholder
+}
+
+getClimbThrust(climb_n1) {
+    // placeholder
+}
+
+getFuelBurn(distance, deltaAltitude, initialSpeed, finalSpeed, thrust) {
+    switch(thrust):
+        case thrust.IDLE:
+            // placeholder
+            break;
+        case thrust.CLIMB:
+            // placeholder
+            break;
+        case thrust.VARIABLE:
+            // placeholder
+            break;
+    end switch;
+}
+```
+
+## VERTICAL PROFILE
+```
+class VerticalProfile {
+    descentProfile() {
+        // CONTRUCTOR TODO
+        this.destination = undefined;
+        this.upcomingWaypoint = undefined;
+        this.previousWaypoint = undefined;
+
+        this.altitudeDeviation = undefined;
+        this.commandedFPA = undefined;
+
+        this.topOfClimb = undefined;
+        this.topOfDescent = undefined;
+        this.speedLimit = undefined;
+        this.decelPoint = undefined;
+
+        this.finalAppFix = undefined;
+        this.finalGlidePathAngle = undefined;
+    }
+
+    calculateStartOfClimb() {
+        // Placeholder
+    }
+    calculateEndOfClimb() {
+        // Placeholder
+    }
+    calculateStartOfDescent() {
+        // Placeholder
+    }
+    calculateEndOfDescent() {
+        // Placeholder
+    }
+    calculateInterceptPoint() {
+        // Placeholder
+    }
+
+
+    initialize() {
+        // Run once at beginning
+    }
+
+    update() {
+        // Update self waypoint and position data here
+
+        switch(fmgcFlightPhase):
+            case preflight:
+            case takeoff:
+            case climb:
+                updateClimbPredictions();
+                updateTocPseudo();
+            case cruise:
+            case descent:
+                updateDescentPredictions();
+                updateSpdLimPseudo();
+                updateTodPseudo();
+            case approach:
+                updateApproachPredictions();
+                updateDecelPseudo();
+                break;
+            case done:
+                break;
+        end switch;
+    }
+
+    updateClimbPredictions() {
+        // Check if recalculation necessary
+    }
+    updateDescentPredictions() {
+        // Check if recalculation necessary
+    }
+    updateApproachPredictions() {
+        // Check if recalculation necessary
+    }
+
+
+    updateDecelPseudo() {
+        // Call this function to update pseudo-waypoint
+    }
+    updateSpdLimPseudo() {
+        // Call this function to update pseudo-waypoint
+    }
+    updateTocPseudo() {
+        // Call this function to update pseudo-waypoint
+    }
+    updateTodPseudo() {
+        // Call this function to update pseudo-waypoint
+    }
+}
+
+```
 
 # Drawbacks
 [drawbacks]: #drawbacks
