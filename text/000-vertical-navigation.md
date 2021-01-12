@@ -305,39 +305,83 @@ getFuelBurn(distance, deltaAltitude, initialSpeed, finalSpeed, thrust) {
 }
 ```
 
+## VNAV UTILITY FUNCTIONS
+```
+calculateFPAfromThrust(thrust, speed, distance, ...) {
+    // Used in climb and idle segment calculations
+}
+
+calculateDeltaSpeedDistance(verticalSpeed, initialSpeed, finalSpeed, ...) {
+    // Used for calculating distance to accel/decel
+}
+
+canAchieveGeometricSegment(flightPathAngle, distance, speed, ...) {
+    // Placeholder
+}
+```
+
+
+## LATERAL FUNCTIONS
+```
+distanceToWaypoint(currentPos, waypoint, ...) {
+    // Placeholder
+}
+
+distanceBetweenWaypoints(waypoint1, waypoint2, ...) {
+    // Placeholder
+}
+```
+
+
 ## VERTICAL PROFILE
 ```
 class VerticalProfile {
     descentProfile() {
         // CONTRUCTOR TODO
-        this.destination = undefined;
-        this.upcomingWaypoint = undefined;
-        this.previousWaypoint = undefined;
+        this._destination = undefined;
+        this._upcomingWaypoint = undefined;
+        this._previousWaypoint = undefined;
 
-        this.altitudeDeviation = undefined;
-        this.commandedFPA = undefined;
+        this._altitudeDeviation = undefined;
+        this._commandedFPA = undefined;
 
-        this.topOfClimb = undefined;
-        this.topOfDescent = undefined;
-        this.speedLimit = undefined;
-        this.decelPoint = undefined;
+        this._topOfClimb = undefined;
+        this._topOfDescent = undefined;
+        this._speedLimit = undefined;
+        this._decelPoint = undefined;
 
-        this.finalAppFix = undefined;
-        this.finalGlidePathAngle = undefined;
+        this._finalAppFix = undefined;
+        this._finalGlidePathAngle = undefined;
     }
 
     calculateStartOfClimb() {
         // Placeholder
     }
+
     calculateEndOfClimb() {
-        // Placeholder
+        if currentPhase < CLIMB:
+            return;
+        endif;
+
+        if fcu.altitude < fmgc.cruiseAltitude:
+            climbTargetAlt = fcu.altitude;
+        else
+            climbTargetAlt = fmgc.cruiseAltitude;
+        endif;
     }
+
     calculateStartOfDescent() {
         // Placeholder
     }
+
     calculateEndOfDescent() {
-        // Placeholder
+        if fcu.altitude > fmgc.finalApproachFixAlt:
+            descentTargetAlt = fcu.altitude;
+        else:
+            descentTargetAlt = null;
+        endif;
     }
+    
     calculateInterceptPoint() {
         // Placeholder
     }
@@ -351,21 +395,21 @@ class VerticalProfile {
         // Update self waypoint and position data here
 
         switch(fmgcFlightPhase):
-            case preflight:
-            case takeoff:
-            case climb:
+            case PREFLIGHT:
+            case TAKEOFF:
+            case CLIMB:
                 updateClimbPredictions();
                 updateTocPseudo();
-            case cruise:
-            case descent:
+            case CRUISE:
+            case DESCENT:
                 updateDescentPredictions();
                 updateSpdLimPseudo();
                 updateTodPseudo();
-            case approach:
+            case APPROACH:
                 updateApproachPredictions();
                 updateDecelPseudo();
                 break;
-            case done:
+            case DONE:
                 break;
         end switch;
     }
