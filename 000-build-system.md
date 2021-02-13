@@ -15,7 +15,7 @@ After months of developing the A32NX using in-repo, bespoke build tools, a few o
   * There is no clear definition of "target", "task", "step" or "project".
     * This limits the amount of correctness that can be enforced in task definitions, order, input or output 
     * This prevents performing generic step-running operations such as step skipping and output caching
-    * This prevents the easy implementation of differrential build systems that produce different packages depending on environment or configuration
+    * This prevents the easy implementation of differential build systems that produce different packages depending on environment or configuration
 * The build system is contained entirely within the A32NX repository
   * This limits its usage to the A32NX project
   * This prevents the centralization of code and the existence of a single source of truth if multiple projects use the system
@@ -29,7 +29,7 @@ The proposed build system is a tool that, simply put, transforms a set of source
 To operate, it requires:
 
 - The aforementioned source files
-- A project configuratioon, describing the project it is building
+- A project configuration, describing the project it is building
 - A build schema, describing different build tasks
 - Build configs, describing configurations that use different tasks based on environment
 
