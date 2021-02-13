@@ -31,7 +31,7 @@ To operate, it requires:
 - The aforementioned source files
 - A project configuration, describing the project it is building
 - A build schema, describing different build tasks
-- Build configs, describing configurations that use different tasks based on environment
+- Build targets, describing configurations that use different tasks based on environment
 
 # Reference-level explanation
 [reference-level-explanation]: #reference-level-explanation
