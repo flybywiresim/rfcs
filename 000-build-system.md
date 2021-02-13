@@ -5,19 +5,33 @@
 # Summary
 [summary]: #summary
 
-One paragraph explanation of the feature.
+Modular and configurable system for building MSFS aircraft packages.
 
 # Motivation
 [motivation]: #motivation
+After months of developing the A32NX using in-repo, bespoke build tools, a few obvious drawbacks have appeared as both the scope of development and number of projects have increased.
 
-Why are we doing this? What is the expected outcome?
+* The build system is not clearly defined in its geometry or operation model
+  * There is no clear definition of "target", "task", "step" or "project".
+    * This limits the amount of correctness that can be enforced in task definitions, order, input or output 
+    * This prevents performing generic step-running operations such as step skipping and output caching
+    * This prevents the easy implementation of differrential build systems that produce different packages depending on environment or configuration
+* The build system is contained entirely within the A32NX repository
+  * This limits its usage to the A32NX project
+  * This prevents the centralization of code and the existence of a single source of truth if multiple projects use the system
+  * Additionally (but not as a consequence of that), many values are hard-coded to generate A32NX packages
 
 # Guide-level explanation
 [guide-level-explanation]: #guide-level-explanation
 
-A quick overview: explain the feature/change as if it were already implemented in the aircraft's code, and you were teaching it to another developer on the project. 
+The proposed build system is a tool that, simply put, transforms a set of source files into a built and ready-to-use MSFS aircraft package.
 
-Introduce new named concepts, use examples when applicable, etc.
+To operate, it requires:
+
+- The aforementioned source files
+- A project configuratioon, describing the project it is building
+- A build schema, describing different build tasks
+- Build configs, describing configurations that use different tasks based on environment
 
 # Reference-level explanation
 [reference-level-explanation]: #reference-level-explanation
@@ -33,15 +47,12 @@ The section should return to the examples given in the previous section, and exp
 # Drawbacks
 [drawbacks]: #drawbacks
 
-Why should we *not* do this?
+* Engineering time is significant
 
 # Rationale and alternatives
 [rationale-and-alternatives]: #rationale-and-alternatives
 
-- Why is this design the best in the space of possible designs?
-- What other designs have been considered and what is the rationale for not choosing them?
-- What is the impact of not doing this?
-
+* No alternatives
 
 # Unresolved questions
 [unresolved-questions]: #unresolved-questions
