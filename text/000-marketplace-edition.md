@@ -91,21 +91,7 @@ Nothing!
 
 ## Points of action
 
-### Removal of online features from A32NX:ME
-
-The following features will have to be removed from **A32NX:ME**:
-
-* TELEX (free text);
-* WX Request (METAR/TAF, ATIS);
-* SimBrief integration;
-* Live map.
-
-*Note: if any online features are later added to the **mainline** edition, they **must not** make their way to **A32NX:ME***.
-
-### Creation of the `flybywiresim/a32nx-marketplace-edition` repository
-
-- The above repository must be created, based on the tip of the `v0.6` branch of `flybywiresim/a32nx` (done);
-- CI actions must be setup to generate marketplace builds for both publishing and QA.
+In order.
 
 ### License switch of mainline edition
 
@@ -115,11 +101,27 @@ The following steps must be taken in a reasonable amount of time in order to acc
 - Consent must be obtained from contributors who have added MIT-licensed code to the `flybywiresim/a32nx` repository to relicense their code as GPLv3;
 - When that is accomplished, the license switch PR must be created and merged, and a notice signaling the different location of the **A32NX:ME** sources must be added to the README.
 
+### Creation of the `flybywiresim/a32nx-marketplace-edition` repository
+
+- The above repository must be created, based on the tip of the `v0.6` branch of `flybywiresim/a32nx` (done);
+- CI actions must be setup to generate marketplace builds for both publishing and QA.
+
+### Removal of online features from A32NX:ME
+
+The following features will have to be removed from **A32NX:ME**:
+
+* TELEX (free text);
+* WX Request (METAR/TAF, ATIS);
+* SimBrief integration;
+* Live map.
+
+*Note: if any online features are later added to the **mainline** edition, they **must not** make their way to **A32NX:ME***
+
 ## Long-term responsibilities
 
 ### Transfer of features
 
-*Note: chose transfered features are listed [above](#chosen-transfered-features).
+*Note: chose transfered features are listed [above](#chosen-transfered-features)*
 
 ### Maintenance of **A32NX:ME** repository
 
