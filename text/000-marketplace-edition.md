@@ -14,7 +14,7 @@ There have been many concerns raised with the inclusion of the A32NX into the in
 
 1. Compatibility of online features (currently: TELEX, WX Request, SimBrief integration, live map) on XBOX
 2. Licensing concerns - MS does not want packages using a copyleft license on the Marketplace
-3. Bureaucratic concerns - MS plays safe with model changes, requiring Airbus to appreove every model edition or addition, since the in-sim markeptlace becomes an officially endorsed item
+3. Bureaucratic concerns - MS plays safe with model changes, requiring Airbus to approve every model edition or addition, since the in-sim markeptlace becomes an officially endorsed item
 
 It has been decided with a large majority (11 strongly in favour, 6 in favour, 4 without an opinion, 2 against), measured using a team-wide survey, to separate the A32NX into mainline and marketplace editions.
 
